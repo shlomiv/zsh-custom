@@ -1,10 +1,18 @@
 #+Title: Custom directory for oh-my-zsh
+Instead of keeping an entire fork of =oh-my-zsh= just for some personal configuration, I moved everything here.
 
 * Installation
+  To install, make sure you install =oh-my-zsh=:
+  #+BEGIN_SRC shell
+  sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+  #+END_SRC
+  
+  And then install this and other custom plugins
   #+BEGIN_SRC shell
   cd ~/.oh-my-zsh
   rm -rf custom
   git clone https://github.com/vadali/zsh-custom.git custom
+
   cd custom/plugins
   git clone https://github.com/psprint/zsh-select.git
   git clone https://github.com/psprint/zconvey.git

@@ -1,0 +1,13 @@
+#+Title: Custom directory for oh-my-zsh
+
+* Installation
+  #+BEGIN_SRC shell
+  cd ~/.oh-my-zsh
+  rm -rf custom
+  git clone https://github.com/vadali/zsh-custom.git custom
+  cd custom/plugins
+  git clone https://github.com/psprint/zsh-select.git
+  git clone https://github.com/psprint/zconvey.git
+
+  ln -sf ~/.oh-my-zsh/custom/.zshrc ~/.zshrc
+  #+END_SRC

@@ -3,3 +3,5 @@
 /themes/my-kardan.zsh-theme
 *example*
 /plugins/zsh-select/
+/plugins/zsh-autosuggestions/
+/plugins/zsh-syntax-highlighting/

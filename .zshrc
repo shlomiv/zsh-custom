@@ -110,7 +110,7 @@ else
 	}
 
         function myemacs-q() {
-	    ~/emacs-git/emacs/nextstep/Emacs.app/Contents/MacOS/Emacs -q --load ~/shlomi-emacs/init.el "$@"
+	    ~/emacs-git/emacs/nextstep/Emacs.app/Contents/MacOS/Emacs -q "$@"
 	}
         
         function myemacs-installed() {

@@ -68,7 +68,7 @@ else
     export ZSHSELECT_ACTIVE_TEXT="reverse"      # Mark current element with reversed text. Use "underline" for marking with underline
     export ZSHSELECT_START_IN_SEARCH_MODE="1"   # Starts Zsh-Select with searching active. "0" will not invoke searching at start.
     
-    plugins=(git env misc tar gitflow git-aliases lein showoff amazon z vagrant osx battery  thefuck github zsh-navigation-tools zconvey)
+    plugins=(git env misc tar gitflow git-aliases lein showoff amazon z vagrant osx battery  thefuck github zsh-navigation-tools zconvey zsh-select zsh-autosuggestions zsh-syntax-highlighting)
 
     eval "$(thefuck --alias f)"
     bindkey -e
@@ -106,13 +106,16 @@ else
 	alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs $@'
 
 	function myemacs() {
-	    /Users/vaknins9/emacs-git/emacs/nextstep/Emacs.app/Contents/MacOS/Emacs -q --load ~/shlomi-emacs/init.el "$@"
+	    ~/emacs-git/emacs/nextstep/Emacs.app/Contents/MacOS/Emacs -q --load ~/shlomi-emacs/init.el "$@"
+	}
+
+        function myemacs-q() {
+	    ~/emacs-git/emacs/nextstep/Emacs.app/Contents/MacOS/Emacs -q --load ~/shlomi-emacs/init.el "$@"
 	}
         
         function myemacs-installed() {
 	    /Applications/Emacs.app/Contents/MacOS/Emacs -q --load ~/shlomi-emacs/init.el "$@"
 	}
-
         
 	function prelude-emacs() {
 	    /Applications/Emacs.app/Contents/MacOS/Emacs -q --load ~/.emacs.d.9.6.2016.new/init.el "$@"

@@ -75,8 +75,7 @@ else
 
     source $ZSH/oh-my-zsh.sh
 
-
-    if [ -f "~/.local/bin" ]; then
+    if [ -d "$HOME/.local/bin" ]; then
         export PATH=~/.local/bin:$PATH
     fi
 

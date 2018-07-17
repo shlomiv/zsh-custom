@@ -68,7 +68,7 @@ else
     export ZSHSELECT_ACTIVE_TEXT="reverse"      # Mark current element with reversed text. Use "underline" for marking with underline
     export ZSHSELECT_START_IN_SEARCH_MODE="1"   # Starts Zsh-Select with searching active. "0" will not invoke searching at start.
     
-    plugins=(git env misc tar gitflow git-aliases lein showoff amazon z vagrant osx battery  thefuck github zsh-navigation-tools zconvey zsh-select zsh-autosuggestions zsh-syntax-highlighting)
+    plugins=(git env misc tar gitflow git-aliases lein showoff amazon z vagrant osx battery  thefuck github zsh-navigation-tools zconvey zsh-select zsh-autosuggestions zsh-syntax-highlighting aws)
 
     eval "$(thefuck --alias f)"
     bindkey -e
@@ -77,6 +77,7 @@ else
 
     if [ -d "$HOME/.local/bin" ]; then
         export PATH=~/.local/bin:$PATH
+        source aws_zsh_completer.sh
     fi
 
     if [ -f "/usr/libexec/java_home" ]; then

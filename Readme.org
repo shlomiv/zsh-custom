@@ -4,6 +4,7 @@ Instead of keeping an entire fork of =oh-my-zsh= just for some personal configur
 * Installation
   To install, make sure you install =oh-my-zsh=:
   #+BEGIN_SRC shell
+  sudo apt-get update
   sudo apt-get install zsh git
   sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
   #+END_SRC
@@ -21,4 +22,16 @@ Instead of keeping an entire fork of =oh-my-zsh= just for some personal configur
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
   ln -sf ~/.oh-my-zsh/custom/.zshrc ~/.zshrc
+  #+END_SRC
+  
+  Just for completness, here is how to set up java and lein
+  #+BEGIN_SRC shell
+  cd ~
+  mkdir bin
+  cd bin
+  wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+  sudo chmod a+x lein
+  
+  sudo apt-get install openjdk-8-jdk -y
+  lein
   #+END_SRC

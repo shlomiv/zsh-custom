@@ -26,9 +26,8 @@ Instead of keeping an entire fork of =oh-my-zsh= just for some personal configur
   
   Just for completness, here is how to set up java and lein
   #+BEGIN_SRC shell
-  cd ~
-  mkdir bin
-  cd bin
+  mkdir ~/bin
+  cd ~/bin
   wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
   sudo chmod a+x lein
   

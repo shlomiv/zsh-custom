@@ -2,7 +2,7 @@
 if [[ "$TERM" == "dumb" ]]
 then
     unsetopt zle
-js    unsetopt prompt_cr
+    unsetopt prompt_cr
     unsetopt prompt_subst
     unfunction precmd
     unfunction preexec
@@ -74,6 +74,11 @@ else
     bindkey -e
 
     source $ZSH/oh-my-zsh.sh
+
+
+    if [ -f "~/.local/bin" ]; then
+        export PATH=~/.local/bin:$PATH
+    fi
 
     if [ -f "/usr/libexec/java_home" ]; then
         export JAVA_HOME="$(/usr/libexec/java_home)"

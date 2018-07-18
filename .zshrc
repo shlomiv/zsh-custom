@@ -69,7 +69,7 @@ else
     export ZSHSELECT_START_IN_SEARCH_MODE="1"   # Starts Zsh-Select with searching active. "0" will not invoke searching at start.
     
     plugins=(git env misc tar gitflow git-aliases lein showoff amazon z vagrant osx battery  thefuck github zsh-navigation-tools zconvey zsh-select zsh-autosuggestions zsh-syntax-highlighting)
-
+    
     eval "$(thefuck --alias f)"
     bindkey -e
 
@@ -101,6 +101,12 @@ else
     #setxkbmap -option "ctrl:swapcaps"
     #setxkbmap -option grp:switch,grp:alt_space_toggle,grp_led:scroll us,il
 
+    function kill-itunes() {
+        while true; do sudo killall iTunes > /dev/null 2>&1 ; sleep 1; done
+    }
+
+    sdo() sudo zsh -c "$functions[$1]" "$@"
+    
     if [ -f /Applications/Emacs.app/Contents/MacOS/Emacs ]
     then
 	alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs $@'

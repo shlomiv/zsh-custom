@@ -111,6 +111,26 @@ else
     }
 
     sdo() sudo zsh -c "$functions[$1]" "$@"
+
+    function auto-commit-org() {
+        inotifywait -q -m -e CLOSE_WRITE --format="git commit -m 'autocommit on change' %w" file.txt | sh
+    }
+
+    function vm-start() {
+        VBoxManage startvm ${1:=Envoy} --type headless
+    }
+
+    function vm-stop() {
+        VBoxManage controlvm ${1:=Envoy} poweroff --type headless
+    }
+
+    function vm-suspend() {
+        VBoxManage controlvm ${1:=Envoy} pause --type headless
+    }
+
+    function vm-resume() {
+        VBoxManage controlvm ${1:=Envoy} resume --type headless
+    }
     
     if [ -f /Applications/Emacs.app/Contents/MacOS/Emacs ]
     then

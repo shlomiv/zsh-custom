@@ -13,7 +13,7 @@ Instead of keeping an entire fork of =oh-my-zsh= just for some personal configur
   #+BEGIN_SRC shell
   cd ~/.oh-my-zsh
   rm -rf custom
-  git clone https://github.com/vadali/zsh-custom.git custom
+  git clone https://github.com/shlomiv/zsh-custom.git custom
 
   cd custom/plugins
   git clone https://github.com/psprint/zsh-select.git

@@ -68,7 +68,7 @@ else
     export ZSHSELECT_ACTIVE_TEXT="reverse"      # Mark current element with reversed text. Use "underline" for marking with underline
     export ZSHSELECT_START_IN_SEARCH_MODE="1"   # Starts Zsh-Select with searching active. "0" will not invoke searching at start.
     
-    plugins=(git env misc tar gitflow git-aliases lein showoff amazon z vagrant osx battery  thefuck github zsh-navigation-tools zconvey zsh-select zsh-autosuggestions zsh-syntax-highlighting aws)
+    plugins=(git env misc tar gitflow git-aliases lein showoff amazon z vagrant osx battery docker-compose docker thefuck github zsh-navigation-tools zconvey zsh-select zsh-autosuggestions zsh-syntax-highlighting aws)
 
     eval "$(thefuck --alias f)"
     bindkey -e
@@ -112,8 +112,13 @@ else
 
     sdo() sudo zsh -c "$functions[$1]" "$@"
 
-    function auto-commit-org() {
-        inotifywait -q -m -e CLOSE_WRITE --format="git commit -m 'autocommit on change' %w" file.txt | sh
+    function auto-commit-org-linux() {
+        inotifywait -q -m -e CLOSE_WRITE --format="git commit -m 'autocommit on change' %w" ${1:=work.org} | sh
+    }
+
+    function auto-commit-org-osx() {
+        echo "Auto commiting " ${1:=~/Documents/work.org}
+        fswatch -0 ${1:=~/Documents/work.org} | while read -d "" event;  do cd $(dirname ${event}); git commit -m 'autocommit on change' ${event} ;done
     }
 
     function vm-start() {
@@ -146,6 +151,11 @@ else
         
         function myemacs-installed() {
 	    /Applications/Emacs.app/Contents/MacOS/Emacs -q --load ~/shlomi-emacs/init.el "$@"
+	}
+
+        function myemacs-installed-auto-commit-org() {
+	    /Applications/Emacs.app/Contents/MacOS/Emacs -q --load ~/shlomi-emacs/init.el "$@" &
+            auto-commit-org-osx
 	}
         
 	function prelude-emacs() {

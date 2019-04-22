@@ -75,6 +75,23 @@ else
 
     source $ZSH/oh-my-zsh.sh
 
+    alias dk='docker'
+    alias dkpn='docker system prune -a'
+    alias dkps='docker ps -a'
+    alias dclft='dclf --tail=10 -t'
+
+    alias gke='\gitk --all $(git log -g --pretty=%h)'
+    alias glg='git log --stat'
+    alias glgg='git log --graph'
+    alias glgga='git log --graph --decorate --all'
+    alias glgm='git log --graph --max-count=10'
+    alias glgp='git log --stat -p'
+    alias glo='git log --oneline --decorate'
+    alias glog='git log --oneline --decorate --graph'
+    alias gloga='git log --oneline --decorate --graph --all'
+    alias glol='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
+    alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --all'
+
     if [ -d "$HOME/.local/bin" ]; then
         export PATH=~/.local/bin:$PATH
         source aws_zsh_completer.sh

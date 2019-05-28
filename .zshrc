@@ -28,23 +28,22 @@ else
 
     export FZF_PREVIEW='"[ -f {} ] && head -100 {} || [ -d {} ] && ls -ltr | head -100"'
 
-    export FZF_PREVIEW='"[[ $(file --mime {}) =~ binary ]] &&
-                 echo {} is a binary file or directory ||
-                 bat --style=numbers --color=always {} ||
-                  cat {} 2> /dev/null | head -500"'
+    export FZF_PREVIEW='"[ -d {} ] && ls -ltr | head  -100 ||
+                         [[ $(file --mime {}) =~ binary ]] &&
+                         echo {} is a binary ||
+                         bat --style=numbers --color=always {} ||
+                         cat {} 2> /dev/null | head -500"'
 
-    setopt HIST_FIND_NO_DUPS
     export FZF_DEFAULT_OPTS="--height 60% --layout=reverse --border -m --bind 'ctrl-v:page-down,alt-v:page-up'"
+    #export FZF_CTRL_T_COMMAND='find . -name "*.ts"'
     export FZF_CTRL_T_OPTS="--preview ${FZF_PREVIEW} --bind ?:toggle-preview"
-
     export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:4 --bind ?:toggle-preview"
 
+    setopt HIST_FIND_NO_DUPS
+    
     export FZF_BASE=/usr/local/opt/fsf
     
-    plugins=(git lein z vagrant osx battery docker-compose docker github
-             #zsh-navigation-tools zconvey zsh-select thefuck amazon misc env tar gitflow showoff git-aliases
-             fzf
-             zsh-autosuggestions zsh-syntax-highlighting aws)
+    plugins=(git lein z osx docker-compose docker github zsh-autosuggestions zsh-syntax-highlighting fzf)
 
     bindkey -e
 
@@ -67,30 +66,13 @@ else
     alias glol='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
     alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --all'
 
-    if [ -d "$HOME/.local/bin" ]; then
-        export PATH=~/.local/bin:$PATH
-        source aws_zsh_completer.sh
-    fi
-
-    if [ -f "/usr/libexec/java_home" ]; then
-        export JAVA_HOME="$(/usr/libexec/java_home)"
-    fi
-
-    PATH=$PATH:$HOME/bin # Add RVM to PATH for scripting
-    if [ -d "$HOME/lemur-1.2.0/bin" ]; then
-        PATH=$PATH:$HOME/lemur-1.2.0/bin # Add RVM to PATH for scripting
-    fi
-
+    PATH=$PATH:$HOME/bin
 
     # Customize to your needs...
     export TERM=xterm-256color
 
     alias hn=hostname
 
-    PATH=$HOME/sbt/bin:$PATH
-    if [ -d "$HOME/apache-maven-3.3.3/bin" ]; then
-        PATH=$HOME/apache-maven-3.3.3/bin:$PATH
-    fi
     #eval $(gpg-agent --daemon)
 
     # set up keyboard
@@ -156,7 +138,3 @@ else
     fi
 
 fi
-
-# ZSH Higher Order Functions
-#. $HOME/.zsh/functional/functional.plugin.zsh
-

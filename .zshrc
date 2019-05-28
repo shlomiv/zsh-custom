@@ -25,6 +25,20 @@ else
     DEFAULT_USER=(shlomiv shlomi)
 
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+    export FZF_PREVIEW='"[ -f {} ] && head -100 {} || [ -d {} ] && ls -ltr | head -100"'
+
+    export FZF_PREVIEW='"[[ $(file --mime {}) =~ binary ]] &&
+                 echo {} is a binary file or directory ||
+                 bat --style=numbers --color=always {} ||
+                  cat {} 2> /dev/null | head -500"'
+
+    setopt HIST_FIND_NO_DUPS
+    export FZF_DEFAULT_OPTS="--height 60% --layout=reverse --border -m --bind 'ctrl-v:page-down,alt-v:page-up'"
+    export FZF_CTRL_T_OPTS="--preview ${FZF_PREVIEW} --bind ?:toggle-preview"
+
+    export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:4 --bind ?:toggle-preview"
+
     export FZF_BASE=/usr/local/opt/fsf
     
     plugins=(git lein z vagrant osx battery docker-compose docker github

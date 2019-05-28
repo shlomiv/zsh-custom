@@ -22,6 +22,9 @@ Instead of keeping an entire fork of =oh-my-zsh= just for some personal configur
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
   ln -sf ~/.oh-my-zsh/custom/.zshrc ~/.zshrc
+  
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install --key-bindings --completions --update-rc
   #+END_SRC
   
   Just for completness, here is how to set up java and lein

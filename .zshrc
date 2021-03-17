@@ -65,7 +65,7 @@ else
     alias glol='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
     alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --all'
 
-    PATH=$PATH:$HOME/bin:$HOME/.cargo/bin
+    PATH=$PATH:$HOME/bin:$HOME/.cargo/bin:/opt/homebrew/bin/
 
     # Customize to your needs...
     export TERM=xterm-256color

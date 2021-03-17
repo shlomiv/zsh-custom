@@ -28,11 +28,10 @@ else
 
     export FZF_PREVIEW='"[ -f {} ] && head -100 {} || [ -d {} ] && ls -ltr | head -100"'
 
-    export FZF_PREVIEW='"[ -d {} ] && ls -ltr | head  -100 ||
-                         [[ $(file --mime {}) =~ binary ]] &&
-                         echo {} is a binary ||
-                         bat --style=numbers --color=always {} ||
-                         cat {} 2> /dev/null | head -500"'
+    export FZF_PREVIEW='"([ -d {} ] && ls -ltr {}) ||
+                         ([[ $(file --mime {}) =~ binary ]] && echo {} is a binary) ||
+                         (bat --style=numbers --color=always {}) ||
+                         (head -500 {} 2> /dev/null)"'
 
     export FZF_DEFAULT_OPTS="--height 60% --layout=reverse --border -m --bind 'ctrl-v:page-down,alt-v:page-up'"
     #export FZF_CTRL_T_COMMAND='find . -name "*.ts"'
@@ -66,7 +65,7 @@ else
     alias glol='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
     alias glola='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --all'
 
-    PATH=$PATH:$HOME/bin
+    PATH=$PATH:$HOME/bin:$HOME/.cargo/bin
 
     # Customize to your needs...
     export TERM=xterm-256color
@@ -138,3 +137,6 @@ else
     fi
 
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+
